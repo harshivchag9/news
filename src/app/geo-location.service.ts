@@ -10,6 +10,6 @@ export class GeoLocationService {
   constructor(private http: HttpClient) { }
 
   getGeoLoc() {
-    return this.http.get<geoLocation>('https://ipinfo.io/json');
+    return this.http.get<geoLocation>('https://ipinfo.io/json?token=512fe38d5c8c4b');
   }
 }

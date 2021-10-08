@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,9 +7,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  @Input() cntry: any;
   constructor() { }
-  country = "harshiv";
   ngOnInit(): void {
   }
 

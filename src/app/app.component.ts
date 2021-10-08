@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { GeoLocationService } from './geo-location.service';
+import { environment } from 'src/environments/environment';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
