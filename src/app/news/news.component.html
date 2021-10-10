@@ -1,0 +1,41 @@
+<progress *ngIf="show"> Loading... </progress>
+<h1 class="mt-30 text-center" *ngIf="data.length <= 0">No Result Found</h1>
+<div class="row" *ngFor="let item of data | paginate: { itemsPerPage: 4, currentPage: p }">
+    <div class=" col-sm-4 grid-margin">
+        <div class="position-relative">
+            <div class="rotate-img">
+                <img src="{{item.urlToImage}}"
+                    onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg'"
+                    alt="thumb" class="img-fluid" />
+            </div>
+            <div class="badge-positioned">
+                <span class="badge badge-danger font-weight-bold">{{item.source.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8  grid-margin">
+        <h2 class="mb-2 font-weight-600">
+            {{item.title}}
+        </h2>
+        <div class="fs-13 mb-2">
+            <span class="mr-2">Photo </span>{{item.publishedAt | dateAgo}}
+        </div>
+        <p class="mb-0">
+            {{item.description }}
+            <a href="javascript:void()" (click)="openModal(item.url, template);">read more...</a>
+        </p>
+
+    </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+<ng-template #template>
+    <div class="modal-header">
+        <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <iframe style="height: 765px;" width="100%" [src]="pageUrl | safeUrl" title=""></iframe>
+    </div>
+</ng-template>
