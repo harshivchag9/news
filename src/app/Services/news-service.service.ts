@@ -11,10 +11,10 @@ export class NewsServiceService {
   constructor(private http: HttpClient) { }
 
   getNews() {
-    return this.http.get<News>(environment.NewsAPI_URL + "?country=" + environment.country + "&apiKey=" + environment.NewsAPI_KEY);
+    return this.http.get<News>(environment.NewsAPI_URL + "?country=" + environment.country);
   }
 
   getNewsByCat(country: String, category: String) {
-    return this.http.get<News>(environment.NewsAPI_URL + "?country=" + country + "&category=" + category + "&apiKey=" + environment.NewsAPI_KEY);
+    return this.http.get<News>(environment.NewsAPI_URL + "?country=" + country + "&category=" + category);
   }
 }
